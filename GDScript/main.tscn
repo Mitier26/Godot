@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1jra7ewdabsy"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_w7ckn"]
+[ext_resource type="Script" path="res://character.gd" id="2_hrlmj"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("character_to_kill")]
+script = ExtResource("1_w7ckn")
+character_to_kill = NodePath("Character")
+
+[node name="Character" type="Node" parent="."]
+script = ExtResource("2_hrlmj")
+profession = "포션상"
+health = 40
+
+[node name="Character2" type="Node" parent="."]
+script = ExtResource("2_hrlmj")
+profession = "탐색"
+health = 30
+
+[node name="Character3" type="Node" parent="."]
+script = ExtResource("2_hrlmj")
+profession = "기사"
+health = 130
