@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0oqtt6x5w3sj"]
+
+[ext_resource type="Script" path="res://Script/opponent.gd" id="1_cia06"]
+[ext_resource type="Texture2D" uid="uid://tcinwr3n7yak" path="res://asset/opponent_car.png" id="2_xnvpy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k412n"]
+size = Vector2(32, 58)
+
+[node name="Opponent" type="Area2D"]
+script = ExtResource("1_cia06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_k412n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_xnvpy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxdhp1gnfelga"]
+
+[ext_resource type="PackedScene" uid="uid://b2jw0xvgo55fu" path="res://scene/FlowBackground.tscn" id="1_gsl3w"]
+[ext_resource type="PackedScene" uid="uid://cj5r8mw3jae25" path="res://scene/Car.tscn" id="2_onc4o"]
+[ext_resource type="Script" path="res://Script/Cupcake Generator.gd" id="3_bcv5r"]
+[ext_resource type="PackedScene" uid="uid://dsekynhkjxbkj" path="res://scene/ScoreUI.tscn" id="4_sqsym"]
+[ext_resource type="Script" path="res://Script/Opponent Generator.gd" id="5_3kbqo"]
+
+[node name="Game" type="Node2D"]
+
+[node name="FlowBackground" parent="." instance=ExtResource("1_gsl3w")]
+
+[node name="Car" parent="." instance=ExtResource("2_onc4o")]
+position = Vector2(519, 775)
+
+[node name="Cupcake Generator" type="Node" parent="."]
+script = ExtResource("3_bcv5r")
+
+[node name="Timer" type="Timer" parent="Cupcake Generator"]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreUi" parent="CanvasLayer" instance=ExtResource("4_sqsym")]
+
+[node name="Opponent Generator" type="Node" parent="."]
+script = ExtResource("5_3kbqo")
+
+[node name="Timer" type="Timer" parent="Opponent Generator"]
+autostart = true
+
+[connection signal="timeout" from="Cupcake Generator/Timer" to="Cupcake Generator" method="_on_timer_timeout"]
+[connection signal="timeout" from="Opponent Generator/Timer" to="Opponent Generator" method="_on_timer_timeout"]

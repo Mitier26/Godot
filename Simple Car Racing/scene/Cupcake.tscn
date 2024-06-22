@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c35qjql4spk80"]
+
+[ext_resource type="Script" path="res://Script/Cupcake.gd" id="1_nulmd"]
+[ext_resource type="Texture2D" uid="uid://nj623kychadd" path="res://asset/cupcake.png" id="2_ohs6r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwdqf"]
+size = Vector2(46, 69)
+
+[node name="Cupcake" type="Area2D"]
+script = ExtResource("1_nulmd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_nwdqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ohs6r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
