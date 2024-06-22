@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvebkrwbf2f8g"]
+
+[ext_resource type="Script" path="res://재미있는 스크립트.gd" id="1_bcow1"]
+[ext_resource type="Script" path="res://트.gd" id="2_24tlt"]
+
+[node name="재미있는씬" type="Node2D"]
+script = ExtResource("1_bcow1")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_24tlt")
