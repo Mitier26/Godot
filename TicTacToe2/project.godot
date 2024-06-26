@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="TicTacToe2"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=192
+window/size/viewport_height=217
+window/size/window_width_override=384
+window/size/window_height_override=384
+window/stretch/mode="canvas_items"

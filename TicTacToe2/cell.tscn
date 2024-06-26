@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://1x5y5f37b32u"]
+
+[ext_resource type="Script" path="res://cell.gd" id="1_oqi6o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxkjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2ti3"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46pgv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[node name="Cell" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sxkjx")
+text = "X"
+flat = true
+script = ExtResource("1_oqi6o")
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c2ti3")
+
+[node name="Border" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_46pgv")
+
+[connection signal="pressed" from="." to="." method="draw_cell"]
