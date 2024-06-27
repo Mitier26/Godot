@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbgibr8io7we0"]
+
+[ext_resource type="Script" path="res://Grid_Move/grid_level.gd" id="1_whlni"]
+[ext_resource type="PackedScene" uid="uid://duhy7k8blrae3" path="res://Grid_Move/player_grid.tscn" id="2_fhr43"]
+
+[node name="GridLevel" type="Node2D"]
+script = ExtResource("1_whlni")
+
+[node name="Player_grid" parent="." instance=ExtResource("2_fhr43")]
+position = Vector2(32, 32)

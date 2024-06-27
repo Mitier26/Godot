@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbgcktbe85cfh"]
+
+[ext_resource type="Texture2D" uid="uid://cupnwemvmk6ta" path="res://idle_0.png" id="1_o4f8e"]
+[ext_resource type="Script" path="res://TopDownGun_Move/bro_player.gd" id="1_wkd3x"]
+[ext_resource type="Texture2D" uid="uid://bemtnxgbuthkv" path="res://weaponR1.png" id="2_fpdla"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_33s3n"]
+radius = 25.318
+
+[node name="BroPlayer" type="CharacterBody2D"]
+script = ExtResource("1_wkd3x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+texture = ExtResource("1_o4f8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 26)
+shape = SubResource("CircleShape2D_33s3n")
+
+[node name="WeaponPivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponPivot"]
+position = Vector2(74, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fpdla")
