@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://qua2tud232pm"]
+
+[ext_resource type="FontFile" uid="uid://dqwdyx0nq4nem" path="res://assets/MaldiniBold.ttf" id="1_0mvnm"]
+[ext_resource type="Script" path="res://scenes/game_over_menu.gd" id="1_ng1fl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf3yo"]
+bg_color = Color(0.0555509, 0.25639, 0.323078, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ms5ft"]
+bg_color = Color(0.209101, 0.459464, 0.266638, 1)
+border_color = Color(0.386282, 0.786651, 0.478369, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_663x7"]
+bg_color = Color(0.412592, 0.826589, 0.506964, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1tmh"]
+bg_color = Color(0.0864129, 0.222194, 0.118302, 1)
+
+[node name="GameOverMenu" type="CanvasLayer"]
+script = ExtResource("1_ng1fl")
+
+[node name="GameOverPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jf3yo")
+
+[node name="ResultLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -85.0
+offset_right = 134.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_0mvnm")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 375.0
+offset_top = 545.0
+offset_right = 625.0
+offset_bottom = 608.0
+theme_override_fonts/font = ExtResource("1_0mvnm")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ms5ft")
+theme_override_styles/hover = SubResource("StyleBoxFlat_663x7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_e1tmh")
+text = "Play Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
