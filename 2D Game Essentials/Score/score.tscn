@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://de4vrxe2ui3i4"]
+
+[ext_resource type="Script" path="res://Score/score.gd" id="1_pw1om"]
+
+[node name="Score" type="Label"]
+offset_left = 1.0
+offset_top = 66.0
+offset_right = 181.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 32
+text = "SCORE : 100"
+script = ExtResource("1_pw1om")

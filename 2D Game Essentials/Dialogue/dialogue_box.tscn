@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2pw482bv345q"]
+
+[ext_resource type="Script" path="res://Dialogue/dialogue_box.gd" id="1_oghdi"]
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oghdi")
+
+[node name="SpeakeName" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 322.0
+offset_right = 457.0
+offset_bottom = 373.0
+color = Color(0.356286, 9.41919e-05, 0.360507, 1)
+
+[node name="Label" type="Label" parent="SpeakeName"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "Name of Speaker"
+
+[node name="Dialogue" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 375.0
+offset_right = 1152.0
+offset_bottom = 593.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Dialogue"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 26
+text = "DIALOGUE IN HERE!"
+
+[node name="Button" type="Button" parent="Dialogue"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 219.0
+offset_right = 1152.0
+offset_bottom = 272.0
+theme_override_font_sizes/font_size = 32
+text = "NEXT"

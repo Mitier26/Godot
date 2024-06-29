@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjmhjb5sll52x"]
+
+[ext_resource type="Script" path="res://sample_level.gd" id="1_0n4qp"]
+[ext_resource type="PackedScene" uid="uid://dltovm1j4kj3w" path="res://Healthbar/player.tscn" id="1_m46v3"]
+[ext_resource type="PackedScene" uid="uid://b0qe7wuip52sg" path="res://Healthbar/health_bar.tscn" id="2_txlh1"]
+[ext_resource type="PackedScene" uid="uid://de4vrxe2ui3i4" path="res://Score/score.tscn" id="3_syocc"]
+[ext_resource type="PackedScene" uid="uid://celnjyxv34v16" path="res://Inventory/Inventory.tscn" id="4_2wgq2"]
+[ext_resource type="Script" path="res://Healthbar/ItemButton.gd" id="5_72mxy"]
+[ext_resource type="Texture2D" uid="uid://bjg4xe5qtfw6v" path="res://Inventory/idle_0.png" id="5_nujvp"]
+[ext_resource type="PackedScene" uid="uid://cpghrxb4gh3qg" path="res://Score/item.tscn" id="6_q73ke"]
+[ext_resource type="Texture2D" uid="uid://d4m3o0p7d2xrn" path="res://Inventory/weaponR1.png" id="8_08dx1"]
+[ext_resource type="PackedScene" uid="uid://c2pw482bv345q" path="res://Dialogue/dialogue_box.tscn" id="10_1toux"]
+
+[node name="SampleLevel" type="Node2D"]
+script = ExtResource("1_0n4qp")
+
+[node name="Player" parent="." instance=ExtResource("1_m46v3")]
+
+[node name="HealthBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("2_txlh1")]
+character = NodePath("..")
+
+[node name="Score" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("3_syocc")]
+character = NodePath("..")
+
+[node name="Inventory" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("4_2wgq2")]
+offset_left = 539.0
+offset_top = 62.0
+offset_right = 539.0
+offset_bottom = 62.0
+character = NodePath("..")
+
+[node name="Button1" type="Button" parent="."]
+offset_left = 223.0
+offset_top = 193.0
+offset_right = 422.0
+offset_bottom = 329.0
+text = "SWORD"
+icon = ExtResource("5_nujvp")
+script = ExtResource("5_72mxy")
+
+[node name="Item" parent="Button1" instance=ExtResource("6_q73ke")]
+item_name = "sword"
+icon = "res://Inventory/idle_0.png"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 222.0
+offset_top = 360.0
+offset_right = 289.0
+offset_bottom = 391.0
+text = "POTION"
+icon = ExtResource("8_08dx1")
+script = ExtResource("5_72mxy")
+
+[node name="Item" parent="Button2" instance=ExtResource("6_q73ke")]
+item_name = "potion"
+icon = "res://Inventory/weaponR1.png"
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="DialogueBox" parent="CanvasGroup" instance=ExtResource("10_1toux")]
+
+[connection signal="pressed" from="Button1" to="Button1" method="_on_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_pressed"]
