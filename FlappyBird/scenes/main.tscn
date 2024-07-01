@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://lj3wjoor2p56"]
+
+[ext_resource type="Texture2D" uid="uid://c3a1po1web3y1" path="res://assets/bg (2).png" id="1_2y657"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_8qa8s"]
+[ext_resource type="PackedScene" uid="uid://cwu2ijq5rhstu" path="res://scenes/pipe.tscn" id="2_lkn1d"]
+[ext_resource type="PackedScene" uid="uid://dtvlbqmt533f3" path="res://scenes/bird.tscn" id="3_y17rk"]
+[ext_resource type="PackedScene" uid="uid://bvmytcdl4hwsf" path="res://scenes/ground.tscn" id="4_afmls"]
+[ext_resource type="PackedScene" uid="uid://3buhki3walwq" path="res://scenes/game_over.tscn" id="6_x2tc6"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_8qa8s")
+pipe_scene = ExtResource("2_lkn1d")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_2y657")
+offset = Vector2(432, 384)
+
+[node name="Bird" parent="." instance=ExtResource("3_y17rk")]
+
+[node name="Ground" parent="." instance=ExtResource("4_afmls")]
+z_index = 2
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "SCORE : 0"
+
+[node name="GameOver" parent="." instance=ExtResource("6_x2tc6")]
+
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="restart" from="GameOver" to="." method="_on_game_over_restart"]
