@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3v8eduntjmi8"]
+
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_2nqah"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apaqb"]
+bg_color = Color(0.19766, 0.6764, 0.691782, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jdta"]
+bg_color = Color(0.095862, 0.387976, 0.397542, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rouro"]
+bg_color = Color(0.264956, 0.810812, 0.828842, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk862"]
+bg_color = Color(0.094422, 0.357543, 0.4415, 1)
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_2nqah")
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 275.0
+offset_top = 700.0
+offset_right = 475.0
+offset_bottom = 750.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_apaqb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1jdta")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rouro")
+text = "Try Again"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 250.0
+offset_top = 335.0
+offset_right = 500.0
+offset_bottom = 415.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xk862")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -27.5
+offset_right = 93.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "YOU WIN!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
