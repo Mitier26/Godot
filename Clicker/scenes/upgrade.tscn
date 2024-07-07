@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq58k3nhgkmwa"]
+
+[ext_resource type="Script" path="res://scenes/Upgrade.gd" id="1_q713l"]
+
+[node name="Upgrade" type="Button"]
+text = "Upgrade 1"
+script = ExtResource("1_q713l")
+lvl = "16"
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

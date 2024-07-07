@@ -18,4 +18,4 @@ func set_property(type):
 
 
 func _on_body_entered(body):
-	body.set_state(bullet_type)
+	body.set_status(bullet_type)
