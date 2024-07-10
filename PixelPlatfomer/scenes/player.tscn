@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c41r5w353wr24"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_6cvq8"]
+[ext_resource type="Resource" uid="uid://cygs6ixp2pi7i" path="res://scenes/FastPlayerMovementData.tres" id="2_n51o7"]
+[ext_resource type="SpriteFrames" uid="uid://mcg6xvqia34f" path="res://scenes/playerGreenSkin.tres" id="2_q8c38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8epyx"]
+size = Vector2(12, 17)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 10
+collision_layer = 2
+script = ExtResource("1_6cvq8")
+moveData = ExtResource("2_n51o7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_q8c38")
+animation = &"Run"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_8epyx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="LadderCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 15)
+collide_with_areas = true
+collide_with_bodies = false
