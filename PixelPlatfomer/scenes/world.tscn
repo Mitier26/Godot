@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://u2vq3gvaayrg"]
+[gd_scene load_steps=8 format=3 uid="uid://u2vq3gvaayrg"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_ecgp2"]
 [ext_resource type="PackedScene" uid="uid://c41r5w353wr24" path="res://scenes/player.tscn" id="2_5h6js"]
 [ext_resource type="PackedScene" uid="uid://b8e5shd3pb5h8" path="res://scenes/tile_map.tscn" id="2_ritml"]
 [ext_resource type="PackedScene" uid="uid://c86uc4qbq5y2b" path="res://scenes/spikes.tscn" id="3_q6toq"]
+[ext_resource type="Resource" uid="uid://duym3mjvht7rm" path="res://scenes/DefaultPlayerMovementData.tres" id="4_esly5"]
 [ext_resource type="PackedScene" uid="uid://bnwf60p767x40" path="res://scenes/walking_enemy.tscn" id="5_tlsit"]
 [ext_resource type="PackedScene" uid="uid://bur64yqagjnhk" path="res://scenes/ladder.tscn" id="6_c3pux"]
 
@@ -16,6 +17,7 @@ layer_0/tile_data = PackedInt32Array(65534, 262144, 1, 65535, 131072, 1, 0, 1310
 
 [node name="Player" parent="." instance=ExtResource("2_5h6js")]
 position = Vector2(7, -12)
+moveData = ExtResource("4_esly5")
 
 [node name="Spikes" parent="." instance=ExtResource("3_q6toq")]
 z_index = 10

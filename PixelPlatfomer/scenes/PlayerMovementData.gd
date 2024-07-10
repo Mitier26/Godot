@@ -9,3 +9,5 @@ class_name PlayerMovementData
 @export var FRICTION = 10
 @export var GRAVITY = 4
 @export var ADDITIONAL_FALL_GRAVITY = 4
+@export var CLIMB_SPEED = 50
+@export var JUMP_COUNT = 1
