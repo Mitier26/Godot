@@ -88,5 +88,5 @@ position = Vector2(117, -144)
 position = Vector2(27, -54)
 
 [node name="Door" parent="." index="21" instance=ExtResource("9_lfmrv")]
-position = Vector2(-99, -162)
+position = Vector2(243, -54)
 target_level_path = "res://level/level_2.tscn"

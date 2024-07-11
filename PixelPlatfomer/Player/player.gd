@@ -19,6 +19,7 @@ var state = MOVE
 var jump_count = 1
 var bufferd_jump = false
 var coyote_jump = false
+var on_door = false
 
 func _ready():
 	animatedSprite.sprite_frames = preload("res://Player/playerGreenSkin.tres")
@@ -134,6 +135,7 @@ func can_jump():
 	return is_on_floor() or coyote_jump
 
 func input_jump():
+	if on_door: return
 	if Input.is_action_just_pressed("ui_up") or bufferd_jump:
 		SoundPlayer.play_sound(SoundPlayer.JUMP)
 		velocity.y = moveData.JUMP_FORCE
