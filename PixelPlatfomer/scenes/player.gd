@@ -13,6 +13,7 @@ enum { MOVE, CLIMB }
 @onready var jumpBufferTimer = $JumpBufferTimer
 @onready var coyoteJumpTimer = $CoyoteJumpTimer
 @onready var audio_stream_player = $AudioStreamPlayer
+@onready var remoteTransform2d = $RemoteTransform2D
 
 var state = MOVE
 var jump_count = 1
@@ -118,7 +119,13 @@ func fast_fall():
 
 func player_die():
 	SoundPlayer.play_sound(SoundPlayer.HURT)
-	get_tree().reload_current_scene()
+	queue_free()
+	#get_tree().reload_current_scene()
+	Events.emit_signal("player_died")
+
+func connect_camera(camera):
+	var camera_path = camera.get_path()
+	remoteTransform2d.remote_path = camera_path
 
 func horizontal_move(input):
 	return input.x != 0
