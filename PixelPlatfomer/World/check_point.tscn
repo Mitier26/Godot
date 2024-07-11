@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmg7nihfhkxxh"]
 
-[ext_resource type="Script" path="res://CheckPoint.gd" id="1_hirlo"]
+[ext_resource type="Script" path="res://World/CheckPoint.gd" id="1_hirlo"]
 [ext_resource type="Texture2D" uid="uid://cqmmlgatdidr" path="res://assets/tilemap_packed.png" id="2_q0wne"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgx87"]

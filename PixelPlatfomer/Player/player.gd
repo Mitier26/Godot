@@ -6,7 +6,7 @@ enum { MOVE, CLIMB }
 
 # 뒤에 as 를 써줌으로 자동완성이 가능해 졌다
 # preload 가 없으면 as 는 작동하지 않는다.
-@export var moveData : Resource = preload("res://scenes/DefaultPlayerMovementData.tres") as PlayerMovementData
+@export var moveData : Resource = preload("res://Player/DefaultPlayerMovementData.tres") as PlayerMovementData
 
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var ladderCheck = $LadderCheck
@@ -21,7 +21,7 @@ var bufferd_jump = false
 var coyote_jump = false
 
 func _ready():
-	animatedSprite.sprite_frames = preload("res://scenes/playerGreenSkin.tres")
+	animatedSprite.sprite_frames = preload("res://Player/playerGreenSkin.tres")
 
 func powerup():
 	moveData = load("res://scenes/FastPlayerMovementData.tres")
@@ -35,25 +35,25 @@ func _physics_process(delta):
 	
 	match state:
 		MOVE: 
-			move_state(input)
+			move_state(input, delta)
 		CLIMB: 
-			climb_state(input)
+			climb_state(input, delta)
 		
 	
 
 # 일반적인 이동
-func move_state(input):
+func move_state(input, delta):
 	
 	# 사다리에 있으면 상태를 사다리 상태로 변경한다.
 	if is_on_ladder() and Input.is_action_pressed("ui_up"):
 		state = CLIMB
 		
-	apply_gravity()
+	apply_gravity(delta)
 	
 	if not horizontal_move(input):
-		apply_friction()
+		apply_friction(delta)
 	else:
-		apply_acceleration(input.x)
+		apply_acceleration(input.x, delta)
 
 	if is_on_floor():
 		reset_jump()
@@ -70,7 +70,7 @@ func move_state(input):
 		# 버퍼 점프
 		buffer_jump()
 		# 빠른 낙하
-		fast_fall()
+		fast_fall(delta)
 			
 	var was_on_air = not is_on_floor()
 	var was_on_floor = is_on_floor()
@@ -86,7 +86,7 @@ func move_state(input):
 		coyote_jump = true
 		coyoteJumpTimer.start()
 	
-func climb_state(input):
+func climb_state(input, delta):
 	if not is_on_ladder():
 		state = MOVE
 	if input.length() != 0:
@@ -113,9 +113,9 @@ func buffer_jump():
 			bufferd_jump = true
 			jumpBufferTimer.start()
 
-func fast_fall():
+func fast_fall(delta):
 	if velocity.y > 10:
-			velocity.y += moveData.ADDITIONAL_FALL_GRAVITY
+			velocity.y += moveData.ADDITIONAL_FALL_GRAVITY * delta
 
 func player_die():
 	SoundPlayer.play_sound(SoundPlayer.HURT)
@@ -150,16 +150,16 @@ func is_on_ladder():
 		return false
 	return true
 
-func apply_gravity():
-	velocity.y += moveData.GRAVITY
+func apply_gravity(delta):
+	velocity.y += moveData.GRAVITY * delta
 	velocity.y = min(velocity.y, 300)
 
-func apply_friction():
-	velocity.x = move_toward(velocity.x, 0, moveData.FRICTION)
+func apply_friction(delta):
+	velocity.x = move_toward(velocity.x, 0, moveData.FRICTION * delta)
 	animatedSprite.play("Idle")
 	
-func apply_acceleration(amount):
-	velocity.x = move_toward(velocity.x, moveData.MAX_SPEED * amount, moveData.ACCELERATION)
+func apply_acceleration(amount, delta):
+	velocity.x = move_toward(velocity.x, moveData.MAX_SPEED * amount, moveData.ACCELERATION * delta)
 	animatedSprite.play("Run")
 	if amount > 0:
 		animatedSprite.flip_h = true
