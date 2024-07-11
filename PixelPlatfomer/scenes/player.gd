@@ -45,7 +45,7 @@ func _physics_process(delta):
 func move_state(input):
 	
 	# 사다리에 있으면 상태를 사다리 상태로 변경한다.
-	if is_on_ladder() and input.y < 0:
+	if is_on_ladder() and Input.is_action_pressed("ui_up"):
 		state = CLIMB
 		
 	apply_gravity()

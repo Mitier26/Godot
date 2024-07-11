@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://1hpfjre5tmej"]
+
+[ext_resource type="Texture2D" uid="uid://ucssgoowrdk6" path="res://assets/tilemap-characters_packed.png" id="1_0q8vf"]
+[ext_resource type="Script" path="res://scenes/stomp_enemy.gd" id="1_g3nj1"]
+[ext_resource type="PackedScene" uid="uid://bau42b48frgud" path="res://scenes/hitbox.tscn" id="2_vlngf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k77pv"]
+atlas = ExtResource("1_0q8vf")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t75r8"]
+atlas = ExtResource("1_0q8vf")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nk0k5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k77pv")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t75r8")
+}],
+"loop": true,
+"name": &"Rising",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oikf"]
+size = Vector2(14, 14)
+
+[sub_resource type="Curve" id="Curve_72vmu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.24323, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xxo6r"]
+colors = PackedColorArray(1, 1, 1, 0.858824, 0.317647, 0.317647, 0.317647, 0)
+
+[node name="StompEnemy" type="Node2D"]
+script = ExtResource("1_g3nj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_nk0k5")
+animation = &"Rising"
+
+[node name="Hitbox" parent="." instance=ExtResource("2_vlngf")]
+position = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_3oikf")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(0, 10)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(9, 3)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 7)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angular_velocity_max = 360.0
+linear_accel_max = 10.0
+angle_max = 360.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_72vmu")
+color = Color(0.92549, 0.92549, 0.92549, 0.780392)
+color_ramp = SubResource("Gradient_xxo6r")
