@@ -12,6 +12,7 @@ enum { MOVE, CLIMB }
 @onready var ladderCheck = $LadderCheck
 @onready var jumpBufferTimer = $JumpBufferTimer
 @onready var coyoteJumpTimer = $CoyoteJumpTimer
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var state = MOVE
 var jump_count = 1
@@ -45,7 +46,7 @@ func move_state(input):
 	# 사다리에 있으면 상태를 사다리 상태로 변경한다.
 	if is_on_ladder() and input.y < 0:
 		state = CLIMB
-	
+		
 	apply_gravity()
 	
 	if not horizontal_move(input):
@@ -102,8 +103,9 @@ func input_jump_release():
 	
 func input_double_jump():
 	if Input.is_action_just_pressed("ui_up") and jump_count > 0:
-			velocity.y = moveData.JUMP_FORCE
-			jump_count -= 1
+		SoundPlayer.play_sound(SoundPlayer.JUMP)
+		velocity.y = moveData.JUMP_FORCE
+		jump_count -= 1
 
 func buffer_jump():
 	if Input.is_action_just_pressed("ui_up"):
@@ -114,6 +116,10 @@ func fast_fall():
 	if velocity.y > 10:
 			velocity.y += moveData.ADDITIONAL_FALL_GRAVITY
 
+func player_die():
+	SoundPlayer.play_sound(SoundPlayer.HURT)
+	get_tree().reload_current_scene()
+
 func horizontal_move(input):
 	return input.x != 0
 
@@ -122,6 +128,7 @@ func can_jump():
 
 func input_jump():
 	if Input.is_action_just_pressed("ui_up") or bufferd_jump:
+		SoundPlayer.play_sound(SoundPlayer.JUMP)
 		velocity.y = moveData.JUMP_FORCE
 		bufferd_jump = false
 
