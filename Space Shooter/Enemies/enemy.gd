@@ -9,6 +9,7 @@ extends Node2D
 
 @onready var hurtbox_component = $HurtboxComponent
 @onready var hitbox_component = $HitboxComponent
+@onready var destroyed_component = $DestroyedComponent
 
 
 func _ready():
@@ -20,4 +21,4 @@ func _ready():
 	)
 	
 	stats_component.no_health.connect(queue_free)
-	
+	hitbox_component.hit_hurtbox.connect(destroyed_component.destroy.unbind(1))
