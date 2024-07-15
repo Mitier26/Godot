@@ -1,3 +1,5 @@
+class_name Enemy
+
 extends Node2D
 
 @onready var move_component = $MoveComponent

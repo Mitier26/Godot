@@ -6,7 +6,7 @@ extends Node2D
 @onready var score_label = $ScoreLabel
 
 func _ready():
-	
+	randomize()
 	update_score_label(game_stats.score)
 	game_stats.score_change.connect(update_score_label)
 	
