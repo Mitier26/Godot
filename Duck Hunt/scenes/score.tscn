@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqkv0o3pkhvr8"]
+
+[ext_resource type="Script" path="res://scripts/score.gd" id="1_pjj2k"]
+[ext_resource type="FontFile" uid="uid://cqu4gddnua7xt" path="res://assets/font/PixelOperator8.ttf" id="1_w6g57"]
+
+[node name="Score" type="CanvasLayer"]
+script = ExtResource("1_pjj2k")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 756.0
+offset_top = 546.0
+offset_right = 796.0
+offset_bottom = 615.0
+theme_override_fonts/font = ExtResource("1_w6g57")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundLabel" type="Label" parent="."]
+offset_left = 369.0
+offset_top = 504.0
+offset_right = 409.0
+offset_bottom = 573.0
+theme_override_fonts/font = ExtResource("1_w6g57")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BulletLabel" type="Label" parent="."]
+offset_left = 351.0
+offset_top = 560.0
+offset_right = 391.0
+offset_bottom = 629.0
+theme_override_font_sizes/font_size = 50
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HitLabel" type="Label" parent="."]
+visible = false
+offset_left = 518.0
+offset_top = 559.0
+offset_right = 598.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 40
+text = "YES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

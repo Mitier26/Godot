@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bafda6a87uvw1"]
+
+[ext_resource type="Script" path="res://scripts/bird_spawner.gd" id="1_yhorj"]
+
+[node name="Bird_Spawner" type="Node"]
+script = ExtResource("1_yhorj")

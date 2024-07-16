@@ -1,0 +1,165 @@
+[gd_scene load_steps=13 format=3 uid="uid://t8fsg1qyoqq0"]
+
+[ext_resource type="Script" path="res://scripts/bird.gd" id="1_d3g3i"]
+[ext_resource type="Texture2D" uid="uid://diyde3j461wol" path="res://assets/sprite/Dunk_Hunt_Original_.png" id="2_2speb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t44uo"]
+atlas = ExtResource("2_2speb")
+region = Rect2(256, 320, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj65v"]
+atlas = ExtResource("2_2speb")
+region = Rect2(320, 320, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnqoe"]
+atlas = ExtResource("2_2speb")
+region = Rect2(192, 288, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h68a"]
+atlas = ExtResource("2_2speb")
+region = Rect2(256, 288, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyd01"]
+atlas = ExtResource("2_2speb")
+region = Rect2(320, 288, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fpvfm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t44uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj65v")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnqoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h68a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyd01")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5nms3"]
+radius = 18.0
+
+[sub_resource type="Animation" id="Animation_ng8te"]
+resource_name = "Death_Animation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimatedSprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_542bj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AnimatedSprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i07wn"]
+_data = {
+"Death_Animation": SubResource("Animation_ng8te"),
+"RESET": SubResource("Animation_542bj")
+}
+
+[node name="Bird" type="CharacterBody2D"]
+z_index = -1
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_d3g3i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fpvfm")
+animation = &"Death"
+autoplay = "Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5nms3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CollisionShape2D")
+libraries = {
+"": SubResource("AnimationLibrary_i07wn")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

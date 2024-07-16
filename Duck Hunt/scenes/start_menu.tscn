@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://dwyspu1or7mj3"]
+
+[ext_resource type="FontFile" uid="uid://dgs772x42icds" path="res://assets/font/PixelOperator8-Bold.ttf" id="1_pxh2o"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_xlasq"]
+[ext_resource type="FontFile" uid="uid://cqu4gddnua7xt" path="res://assets/font/PixelOperator8.ttf" id="2_vmm8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wiab"]
+bg_color = Color(0.65098, 0.611765, 0.258824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ubs4"]
+bg_color = Color(0.227451, 0.670588, 0.705882, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsisn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i15tt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efn4g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8sd1a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3raq"]
+bg_color = Color(1, 0.17487, 0.120331, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8a0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1l1wv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n5idl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8oe"]
+
+[node name="Start_Menu" type="CanvasLayer"]
+script = ExtResource("1_xlasq")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wiab")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 23.5
+offset_right = 1128.5
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0.4, 0.490196, 0, 1)
+theme_override_fonts/font = ExtResource("1_pxh2o")
+theme_override_font_sizes/font_size = 130
+text = "DUNK HUNT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 261.0
+offset_right = 757.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("2_vmm8i")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ubs4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fsisn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_i15tt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_efn4g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8sd1a")
+text = "PLAY"
+
+[node name="ExitButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 407.5
+offset_top = 450.0
+offset_right = 744.5
+offset_bottom = 595.0
+theme_override_fonts/font = ExtResource("2_vmm8i")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_u3raq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t8a0r")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1l1wv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_n5idl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8y8oe")
+text = "EXIT"
+
+[connection signal="pressed" from="Panel/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Panel/ExitButton" to="." method="_on_exit_button_pressed"]

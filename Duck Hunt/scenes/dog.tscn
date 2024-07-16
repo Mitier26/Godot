@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://8aesfdeaolcr"]
+
+[ext_resource type="Script" path="res://scripts/dog.gd" id="1_lvnni"]
+[ext_resource type="Texture2D" uid="uid://diyde3j461wol" path="res://assets/sprite/Dunk_Hunt_Original_.png" id="2_eo11s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvab1"]
+atlas = ExtResource("2_eo11s")
+region = Rect2(192, 400, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ftuk"]
+atlas = ExtResource("2_eo11s")
+region = Rect2(256, 400, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vrl75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvab1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ftuk")
+}],
+"loop": true,
+"name": &"Laughing",
+"speed": 5.0
+}]
+
+[node name="Dog" type="CharacterBody2D"]
+position = Vector2(600, 490)
+scale = Vector2(2, 2)
+script = ExtResource("1_lvnni")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vrl75")
+animation = &"Laughing"
+autoplay = "Laughing"

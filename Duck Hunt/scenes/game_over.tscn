@@ -1,0 +1,125 @@
+[gd_scene load_steps=16 format=3 uid="uid://cpdct3idfifat"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_0aav5"]
+[ext_resource type="PackedScene" uid="uid://8aesfdeaolcr" path="res://scenes/dog.tscn" id="1_5jhy1"]
+[ext_resource type="FontFile" uid="uid://dgs772x42icds" path="res://assets/font/PixelOperator8-Bold.ttf" id="2_h1a37"]
+[ext_resource type="FontFile" uid="uid://cqu4gddnua7xt" path="res://assets/font/PixelOperator8.ttf" id="4_arplg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4a6a"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jyvo"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s3buu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aere4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2xhon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ddp6j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu4bb"]
+bg_color = Color(1, 0, 0, 0.996078)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4ae7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nh4w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8nak5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36bvs"]
+
+[node name="Game_Over" type="CanvasLayer"]
+script = ExtResource("1_0aav5")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u4a6a")
+
+[node name="Dog" parent="Panel" instance=ExtResource("1_5jhy1")]
+position = Vector2(677, 145)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 15.5
+offset_top = 50.0
+offset_right = 1136.5
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h1a37")
+theme_override_font_sizes/font_size = 130
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 222.0
+offset_right = 631.0
+offset_bottom = 361.0
+theme_override_fonts/font = ExtResource("4_arplg")
+theme_override_font_sizes/font_size = 75
+text = "HIGH SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 222.0
+offset_right = 1096.0
+offset_bottom = 361.0
+theme_override_fonts/font = ExtResource("4_arplg")
+theme_override_font_sizes/font_size = 75
+text = "000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 467.0
+offset_right = 369.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_arplg")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_3jyvo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s3buu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aere4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2xhon")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ddp6j")
+text = "RETRY"
+
+[node name="MenuButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 467.0
+offset_right = 1117.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_arplg")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_uu4bb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p4ae7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6nh4w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8nak5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_36bvs")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/MenuButton" to="." method="_on_menu_button_pressed"]

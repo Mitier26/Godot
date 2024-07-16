@@ -14,6 +14,7 @@ func _ready():
 	load_highscore()
 	if game_stats.score > game_stats.highscore:
 		game_stats.highscore = game_stats.score
+		save_highscore()
 	score_value.text = str(game_stats.score)
 	high_score_value.text = str(game_stats.highscore)
 

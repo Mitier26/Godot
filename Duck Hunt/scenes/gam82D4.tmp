@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpdct3idfifat"]
+
+[ext_resource type="PackedScene" uid="uid://8aesfdeaolcr" path="res://scenes/dog.tscn" id="1_5jhy1"]
+[ext_resource type="FontFile" uid="uid://dgs772x42icds" path="res://assets/font/PixelOperator8-Bold.ttf" id="2_h1a37"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4a6a"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[node name="Game_Over" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u4a6a")
+
+[node name="Dog" parent="Panel" instance=ExtResource("1_5jhy1")]
+position = Vector2(677, 145)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 15.5
+offset_top = 50.0
+offset_right = 1136.5
+offset_bottom = 181.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h1a37")
+theme_override_font_sizes/font_size = 130
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
