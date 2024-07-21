@@ -11,5 +11,18 @@ config_version=5
 [application]
 
 config/name="Breakout"
+run/main_scene="res://scenes/level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scenes/game_manager.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

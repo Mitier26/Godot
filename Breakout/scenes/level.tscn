@@ -1,11 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://djim3802rcfby"]
+[gd_scene load_steps=8 format=3 uid="uid://djim3802rcfby"]
 
 [ext_resource type="PackedScene" uid="uid://64x4bceyatxw" path="res://scenes/paddle.tscn" id="1_arw6n"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_il8pt"]
+[ext_resource type="PackedScene" uid="uid://d2fois5xod6r7" path="res://scenes/ball.tscn" id="2_l6uyf"]
+[ext_resource type="Texture2D" uid="uid://bejk6kved71lg" path="res://assets/0f0f0378-e0cc-4f27-aa82-be980337a7e4.png" id="4_oqdd1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydsav"]
+size = Vector2(10, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vf4q"]
+size = Vector2(1172, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6hi12"]
+size = Vector2(1152, 66.5)
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_il8pt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
 [node name="Paddle" parent="." instance=ExtResource("1_arw6n")]
 position = Vector2(576, 576)
+motion_mode = 1
+
+[node name="Ball" parent="." instance=ExtResource("2_l6uyf")]
+position = Vector2(674, 421)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Left Wall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-5, 324)
+shape = SubResource("RectangleShape2D_ydsav")
+
+[node name="Right Wall" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1157, 324)
+shape = SubResource("RectangleShape2D_ydsav")
+
+[node name="Celling" type="CollisionShape2D" parent="Walls"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_3vf4q")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.239216)
+position = Vector2(541, 295)
+texture = ExtResource("4_oqdd1")
+
+[node name="Deathzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deathzone"]
+position = Vector2(576, 685)
+shape = SubResource("RectangleShape2D_6hi12")
+
+[connection signal="body_entered" from="Deathzone" to="Ball" method="_on_deathzone_body_entered"]
