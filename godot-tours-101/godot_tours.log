@@ -1,0 +1,250 @@
+2024-07-21T11:52:50:INFO: { "OS": "Windows", "video_adapter_driver_info": ["NVIDIA", "31.0.15.5222"], "screen_size": (3840, 2160), "screen_dpi": 168, "screen_scale": 1, "cores": 8, "locale": "ko_KR" }
+2024-07-21T11:52:50:INFO: [_step_commands: 0]
+Godot Engine v4.2.2.stable.official (c) 2007-present Juan Linietsky, Ariel Manzur & Godot Contributors.
+--- Debug adapter server started ---
+--- GDScript language server started on port 6005 ---
+  Node not found: "Tiles" (relative to "/root/@EditorNode@17122/@Panel@13/@VBoxContainer@14/@HSplitContainer@17/@HSplitContainer@25/@HSplitContainer@33/@VBoxContainer@34/@VSplitContainer@36/@PanelContainer@6818/@VBoxContainer@6819/@TileMapEditor@16716").
+  res://addons/godot_tours/core/utils.gd:102 - Cannot call method 'get_children' on a null value.
+  res://addons/godot_tours/core/utils.gd:102 - Cannot call method 'get_children' on a null value.
+  Node not found: "Terrains" (relative to "/root/@EditorNode@17122/@Panel@13/@VBoxContainer@14/@HSplitContainer@17/@HSplitContainer@25/@HSplitContainer@33/@VBoxContainer@34/@VSplitContainer@36/@PanelContainer@6818/@VBoxContainer@6819/@TileMapEditor@16716").
+  res://addons/godot_tours/core/editor_interface_access.gd:293 - Cannot call method 'get_child' on a null value.
+
+2024-07-21T11:53:03:INFO: [_step_commands: 1]
+Godot Engine v4.2.2.stable.official (c) 2007-present Juan Linietsky, Ariel Manzur & Godot Contributors.
+--- Debug adapter server started ---
+--- GDScript language server started on port 6005 ---
+  Node not found: "Tiles" (relative to "/root/@EditorNode@17122/@Panel@13/@VBoxContainer@14/@HSplitContainer@17/@HSplitContainer@25/@HSplitContainer@33/@VBoxContainer@34/@VSplitContainer@36/@PanelContainer@6818/@VBoxContainer@6819/@TileMapEditor@16716").
+  res://addons/godot_tours/core/utils.gd:102 - Cannot call method 'get_children' on a null value.
+  res://addons/godot_tours/core/utils.gd:102 - Cannot call method 'get_children' on a null value.
+  Node not found: "Terrains" (relative to "/root/@EditorNode@17122/@Panel@13/@VBoxContainer@14/@HSplitContainer@17/@HSplitContainer@25/@HSplitContainer@33/@VBoxContainer@34/@VSplitContainer@36/@PanelContainer@6818/@VBoxContainer@6819/@TileMapEditor@16716").
+  res://addons/godot_tours/core/editor_interface_access.gd:293 - Cannot call method 'get_child' on a null value.
+  res://tours/godot-first-tour/godot_first_tour.gd:55 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+[WARN] 'title(=Node)' not found in tabs '[인스펙터, 노드, 작업 내역]' for 'bubble_add_task_set_tab_to_title()' at '_step_commands(=23)'.
+  scene/animation/animation_mixer.cpp:880 - AnimationMixer: 'expression_neutral', Value Track: 'Root/EyeLAnchor/EyeL/Eyebrow:texture' uses a non-numeric type as key value with UpdateMode.UPDATE_CONTINUOUS. This will not be blended correctly, so it is forced to UpdateMode.UPDATE_DISCRETE. (User)
+
+2024-07-21T11:54:24:INFO: [_step_commands: 2]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+
+2024-07-21T11:54:28:INFO: [_step_commands: 3]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:34:INFO: [_step_commands: 4]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:41:INFO: [_step_commands: 5]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:45:INFO: [_step_commands: 6]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:47:INFO: [_step_commands: 7]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:49:INFO: [_step_commands: 8]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:54:INFO: [_step_commands: 9]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:56:INFO: [_step_commands: 10]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:58:INFO: [_step_commands: 11]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:54:59:INFO: [_step_commands: 12]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:55:05:INFO: [_step_commands: 13]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+  res://tours/godot-first-tour/godot_first_tour.gd:236 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:55:06:INFO: [_step_commands: 14]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:110 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+  res://tours/godot-first-tour/godot_first_tour.gd:236 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+  res://tours/godot-first-tour/godot_first_tour.gd:241 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
+2024-07-21T11:56:01:INFO: [_step_commands: 15]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:04:INFO: [_step_commands: 16]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:05:INFO: [_step_commands: 17]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:16:INFO: [_step_commands: 18]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:18:INFO: [_step_commands: 19]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:20:INFO: [_step_commands: 20]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:28:INFO: [_step_commands: 21]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:37:INFO: [_step_commands: 22]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:38:INFO: [_step_commands: 23]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:40:INFO: [_step_commands: 24]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:41:INFO: [_step_commands: 25]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:56:43:INFO: [_step_commands: 26]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:57:41:INFO: [_step_commands: 27]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:57:44:INFO: [_step_commands: 28]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:57:46:INFO: [_step_commands: 29]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+부모 노드 다시 지정
+씬 실행 취소: 부모 노드 다시 지정
+
+2024-07-21T11:57:52:INFO: [_step_commands: 30]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+
+2024-07-21T11:57:54:INFO: [_step_commands: 31]
+Godot Engine v4.2.2.stable.official.15073afe3 - https://godotengine.org
+Vulkan API 1.3.277 - Forward Mobile - Using Vulkan Device #0: NVIDIA - NVIDIA GeForce GTX 1070 Ti
+ 
+--- Debugging process stopped ---
+  res://tours/godot-first-tour/godot_first_tour.gd:497 - Invalid set index 'button_pressed' (on base: 'Nil') with value of type 'bool'.
+
