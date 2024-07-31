@@ -5,5 +5,7 @@
 [node name="main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_eo28t")]
-position = Vector2(595, 615)
+position = Vector2(3, 289)
 scale = Vector2(4, 4)
+
+[node name="Camera2D" type="Camera2D" parent="."]
