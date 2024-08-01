@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_3n13b")
 sprite = ExtResource("2_lq4or")
-width = 12
+width = 11
 animation_name = "move_2"
 points = 40
