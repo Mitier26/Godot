@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Player
+
 # 이동 속도 변수
 @export var speed := 200
 # 이동 방향을 나타내는 벡터
@@ -7,6 +9,7 @@ var direction := Vector2.ZERO
 
 # 충돌 영역 노드를 저장하는 변수
 @onready var collision_rect := $CollisionShape2D
+@onready var animation_player = $AnimationPlayer
 
 # 충돌 박스의 가로 크기와 화면 경계 값들을 저장할 변수
 var bounding_size_x := 0.0
@@ -51,3 +54,7 @@ func _physics_process(delta):
 	
 	# 이동 가능 범위 내에서 플레이어의 위치 업데이트
 	position.x += delta_movement
+
+func on_player_destroyed():
+	speed = 0
+	animation_player.play("destroy")
