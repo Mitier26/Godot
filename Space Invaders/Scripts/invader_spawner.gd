@@ -22,11 +22,16 @@ const INVADER_POSITION_Y_INCREMENT = 20
 # 외계인의 이동 방향. 1은 오른쪽, -1은 왼쪽을 의미
 var movement_direction = 1
 
+@onready var movement_timer = $MovementTimer
+
 # 외계인 장면을 미리 로드
 var invader_scene = preload("res://Scenes/invader.tscn")
 
 # 노드가 준비될 때 호출되는 함수
 func _ready():
+	
+	movement_timer.timeout.connect(move_invasers)
+	
 	# 외계인 각 타입에 대한 리소스를 미리 로드
 	var invader_1_res = preload("res://Resources/invader_1.tres")
 	var invader_2_res = preload("res://Resources/invader_2.tres")
@@ -67,3 +72,17 @@ func spawn_invader(invader_config, spawn_position: Vector2):
 	invader.config = invader_config
 	invader.global_position = spawn_position
 	add_child(invader)
+
+func move_invasers():
+	position.x += INVADER_POSITION_X_INCREMENT * movement_direction
+
+func _on_left_wall_area_entered(area):
+	if(movement_direction == -1):
+		position.y += INVADER_POSITION_Y_INCREMENT
+		movement_direction *= -1
+
+
+func _on_right_wall_area_entered(area):
+	if(movement_direction == 1):
+		position.y += INVADER_POSITION_Y_INCREMENT
+		movement_direction *= -1
