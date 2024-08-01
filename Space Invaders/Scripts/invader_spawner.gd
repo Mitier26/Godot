@@ -22,15 +22,20 @@ const INVADER_POSITION_Y_INCREMENT = 20
 # 외계인의 이동 방향. 1은 오른쪽, -1은 왼쪽을 의미
 var movement_direction = 1
 
+# 타이머 노드 참조를 위한 변수 선언
 @onready var movement_timer = $MovementTimer
+@onready var shoot_timer = $ShootTimer
 
-# 외계인 장면을 미리 로드
+# 외계인과 외계인 탄환의 장면을 미리 로드
 var invader_scene = preload("res://Scenes/invader.tscn")
+var invader_shot_scene = preload("res://Scenes/invader_shot.tscn")
 
 # 노드가 준비될 때 호출되는 함수
 func _ready():
-	
+	# 타이머 신호에 move_invasers 함수 연결
 	movement_timer.timeout.connect(move_invasers)
+	# 타이머 신호에 on_invader_shoot 함수 연결
+	shoot_timer.timeout.connect(on_invader_shoot)
 	
 	# 외계인 각 타입에 대한 리소스를 미리 로드
 	var invader_1_res = preload("res://Resources/invader_1.tres")
@@ -68,21 +73,42 @@ func _ready():
 			
 # 외계인을 생성하고 설정하는 함수
 func spawn_invader(invader_config, spawn_position: Vector2):
+	# invader_scene에서 새로운 외계인 인스턴스를 생성
 	var invader = invader_scene.instantiate() as Invader
+	# 생성된 외계인에 대한 설정값을 적용
 	invader.config = invader_config
+	# 외계인의 위치를 지정
 	invader.global_position = spawn_position
+	# 생성된 외계인을 이 노드의 자식으로 추가
 	add_child(invader)
-
+	
+# 외계인들이 이동하는 함수
 func move_invasers():
+	# 외계인들이 현재 이동 방향에 따라 X 축으로 이동
 	position.x += INVADER_POSITION_X_INCREMENT * movement_direction
 
+# 외계인이 발사하는 함수
+func on_invader_shoot():
+	# 자식 노드들 중 Invader 클래스의 인스턴스만 필터링하고 그 위치를 리스트로 만듦
+	var random_child_position = get_children().filter(func (child): return child is Invader).map(func (invader) : return invader.global_position).pick_random()
+	
+	# invader_shot_scene에서 새로운 탄환 인스턴스를 생성
+	var invader_shot = invader_shot_scene.instantiate() as InvaderShot
+	# 탄환의 위치를 랜덤하게 선택된 외계인의 위치로 설정
+	invader_shot.global_position = random_child_position
+	# 생성된 탄환을 씬의 루트에 추가하여 게임에 등장시킴
+	get_tree().root.add_child(invader_shot)
+
+# 외계인이 왼쪽 벽에 도달했을 때 호출되는 함수
 func _on_left_wall_area_entered(area):
-	if(movement_direction == -1):
+	# 왼쪽으로 이동 중일 때만 아래로 이동하고 방향을 반대로 바꿈
+	if movement_direction == -1:
 		position.y += INVADER_POSITION_Y_INCREMENT
 		movement_direction *= -1
 
-
+# 외계인이 오른쪽 벽에 도달했을 때 호출되는 함수
 func _on_right_wall_area_entered(area):
-	if(movement_direction == 1):
+	# 오른쪽으로 이동 중일 때만 아래로 이동하고 방향을 반대로 바꿈
+	if movement_direction == 1:
 		position.y += INVADER_POSITION_Y_INCREMENT
 		movement_direction *= -1
