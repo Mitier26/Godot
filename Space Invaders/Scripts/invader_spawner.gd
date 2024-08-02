@@ -3,6 +3,10 @@ extends Node2D
 # 클래스 이름을 'Invader_spawner'로 설정하여 다른 스크립트에서 이 클래스를 사용할 수 있게 함
 class_name Invader_spawner
 
+signal invader_destroyed(points : int)
+signal game_won
+signal game_lost
+
 # 외계인 배치의 행 수와 열 수를 정의
 const ROWS = 5
 const COLUMNS = 11
@@ -21,6 +25,11 @@ const INVADER_POSITION_Y_INCREMENT = 20
 
 # 외계인의 이동 방향. 1은 오른쪽, -1은 왼쪽을 의미
 var movement_direction = 1
+
+# 외계인를 파괴한 수
+var invader_destroyed_count = 0
+# 총 외계인의 수
+var invader_total_count = ROWS * COLUMNS
 
 # 타이머 노드 참조를 위한 변수 선언
 @onready var movement_timer = $MovementTimer
@@ -79,6 +88,8 @@ func spawn_invader(invader_config, spawn_position: Vector2):
 	invader.config = invader_config
 	# 외계인의 위치를 지정
 	invader.global_position = spawn_position
+	# 외계인을 생성할 때 시그널을 연결한다.
+	invader.invader_destroyed.connect(on_invader_destroyed)
 	# 생성된 외계인을 이 노드의 자식으로 추가
 	add_child(invader)
 	
@@ -112,3 +123,18 @@ func _on_right_wall_area_entered(area):
 	if movement_direction == 1:
 		position.y += INVADER_POSITION_Y_INCREMENT
 		movement_direction *= -1
+
+func on_invader_destroyed(points: int):
+	invader_destroyed.emit(points)
+	invader_destroyed_count += 1
+	
+	if invader_destroyed_count > invader_total_count:
+		game_won.emit()
+		shoot_timer.stop()
+		movement_timer.stop()
+
+
+func _on_bottom_wall_area_entered(area):
+	game_lost.emit()
+	movement_timer.stop()
+	movement_direction = 0

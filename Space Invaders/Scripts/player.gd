@@ -2,6 +2,9 @@ extends Area2D
 
 class_name Player
 
+# 플레이어 파괴되었을 때 보낼 신호
+signal player_destroy
+
 # 이동 속도 변수
 @export var speed := 200
 # 이동 방향을 나타내는 벡터
@@ -58,3 +61,14 @@ func _physics_process(delta):
 func on_player_destroyed():
 	speed = 0
 	animation_player.play("destroy")
+
+# 플레이어 에니메이션이 종료될 때 실행 되는 함수
+func _on_animation_player_animation_finished(anim_name):
+	# 종료되는 에니메이션이 destroy면
+	if anim_name == 'destroy':
+		# 1초되에 아래 줄을 실행한다.
+		await get_tree().create_timer(1).timeout
+		# 사용자 정의 시그널
+		# 플레이어가 파괴되었다는 신호를 보낸다.
+		player_destroy.emit()
+		queue_free()

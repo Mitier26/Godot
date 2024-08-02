@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://20gtfbtx46w2"]
+[gd_scene load_steps=11 format=3 uid="uid://20gtfbtx46w2"]
 
 [ext_resource type="PackedScene" uid="uid://blh3123n7rpq1" path="res://Scenes/player.tscn" id="1_eo28t"]
 [ext_resource type="PackedScene" uid="uid://ccybsujyf8h6a" path="res://Scenes/bullet_catcher.tscn" id="2_vxsck"]
 [ext_resource type="PackedScene" uid="uid://cse6ab52ydnk6" path="res://Scenes/invader_spawner.tscn" id="3_knhdd"]
 [ext_resource type="PackedScene" uid="uid://b3kxpmaww77go" path="res://Scenes/ufo_spawner.tscn" id="4_7jo56"]
+[ext_resource type="PackedScene" uid="uid://dgonftyywikrc" path="res://Scenes/bunker.tscn" id="5_q4qne"]
+[ext_resource type="Script" path="res://Scripts/LifeManager.gd" id="6_0ovum"]
+[ext_resource type="Script" path="res://Scripts/PointsCounter.gd" id="7_cut0r"]
+[ext_resource type="PackedScene" uid="uid://d1wx4ehn8xsjg" path="res://Scripts/ui.tscn" id="8_048nx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u22eo"]
 size = Vector2(20, 658)
@@ -15,7 +19,6 @@ size = Vector2(1198, 20)
 
 [node name="Player" parent="." instance=ExtResource("1_eo28t")]
 position = Vector2(3, 289)
-scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -54,5 +57,30 @@ shape = SubResource("RectangleShape2D_4ssan")
 
 [node name="UFOSpawner" parent="." instance=ExtResource("4_7jo56")]
 
+[node name="Bunker" parent="." instance=ExtResource("5_q4qne")]
+position = Vector2(-400, 210)
+scale = Vector2(4, 4)
+
+[node name="Bunker2" parent="." instance=ExtResource("5_q4qne")]
+position = Vector2(-150, 210)
+scale = Vector2(4, 4)
+
+[node name="Bunker3" parent="." instance=ExtResource("5_q4qne")]
+position = Vector2(150, 210)
+scale = Vector2(4, 4)
+
+[node name="Bunker4" parent="." instance=ExtResource("5_q4qne")]
+position = Vector2(400, 210)
+scale = Vector2(4, 4)
+
+[node name="LifeManager" type="Node" parent="."]
+script = ExtResource("6_0ovum")
+
+[node name="PointsCounter" type="Node" parent="."]
+script = ExtResource("7_cut0r")
+
+[node name="UI" parent="." instance=ExtResource("8_048nx")]
+
 [connection signal="area_entered" from="Walls/LeftWall" to="InvaderSpawner" method="_on_left_wall_area_entered"]
 [connection signal="area_entered" from="Walls/RightWall" to="InvaderSpawner" method="_on_right_wall_area_entered"]
+[connection signal="area_entered" from="Walls/BottomWall" to="InvaderSpawner" method="_on_bottom_wall_area_entered"]

@@ -23,5 +23,5 @@ func _on_area_entered(area):
 		shooting_point.queue_free()
 		speed = 0
 		sprite_2d.texture = explosion_texture
-		await get_tree().create_timer(1.5)
+		await get_tree().create_timer(1.5).timeout
 		queue_free()
