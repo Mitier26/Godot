@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PointingIndicator" load_steps=3 format=3 uid="uid://st0nahqgpd7h"]
+
+[ext_resource type="Script" path="res://PointingIndicator.gd" id="1_05ah3"]
+[ext_resource type="Texture2D" uid="uid://5ogxmmvcn437" path="res://assets/Arrow_Indicator.png" id="2_gq6ml"]
+
+[resource]
+script = ExtResource("1_05ah3")
+texture = ExtResource("2_gq6ml")

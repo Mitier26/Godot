@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dxu1p43w4ennl"]
+
+[ext_resource type="Resource" uid="uid://8v5uphjrw2yw" path="res://Moving.tres" id="1_14yp0"]
+[ext_resource type="Script" path="res://Skill.gd" id="2_nitos"]
+
+[resource]
+script = ExtResource("2_nitos")
+title = "Point"
+indicator = ExtResource("1_14yp0")
+projectile_name = ""

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://dvhhcmg5ug5g7"]
+
+[ext_resource type="Resource" uid="uid://st0nahqgpd7h" path="res://Resources/Indicators/Arrow.tres" id="1_wm1mm"]
+[ext_resource type="Script" path="res://Skill.gd" id="2_a7cuk"]
+
+[resource]
+script = ExtResource("2_a7cuk")
+title = "Single"
+indicator = ExtResource("1_wm1mm")
+projectile_name = ""

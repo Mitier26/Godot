@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MovingIndicator" load_steps=4 format=3 uid="uid://8v5uphjrw2yw"]
+
+[ext_resource type="Texture2D" uid="uid://dfdsknjwndp02" path="res://assets/cross_mark.png" id="1_yd1ok"]
+[ext_resource type="Script" path="res://MovingIndicator.gd" id="2_8cgb6"]
+[ext_resource type="Texture2D" uid="uid://d3wf52y16np5" path="res://assets/Range_Indicator.png" id="3_7jrpa"]
+
+[resource]
+script = ExtResource("2_8cgb6")
+cursor_texture = ExtResource("1_yd1ok")
+texture = ExtResource("3_7jrpa")

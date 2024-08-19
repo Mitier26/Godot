@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PointingIndicator" load_steps=3 format=3 uid="uid://dk1r6h6fpmmig"]
+
+[ext_resource type="Script" path="res://PointingIndicator.gd" id="1_uasgk"]
+[ext_resource type="Texture2D" uid="uid://coqa3kmdgi218" path="res://assets/Cone_Indicator.png" id="2_8m0oy"]
+
+[resource]
+script = ExtResource("1_uasgk")
+texture = ExtResource("2_8m0oy")

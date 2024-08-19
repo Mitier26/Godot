@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MultiShot" load_steps=4 format=3 uid="uid://c1vtsdl386b40"]
+
+[ext_resource type="Resource" uid="uid://dk1r6h6fpmmig" path="res://Resources/Indicators/Cone.tres" id="1_o2aq0"]
+[ext_resource type="PackedScene" uid="uid://bgxe24jekiffq" path="res://projectile.tscn" id="2_ul88c"]
+[ext_resource type="Script" path="res://MultiShot.gd" id="3_by654"]
+
+[resource]
+script = ExtResource("3_by654")
+count = 5
+title = "Multi Shot"
+indicator = ExtResource("1_o2aq0")
+projectile_name = "shuriken"
+projectile_node = ExtResource("2_ul88c")

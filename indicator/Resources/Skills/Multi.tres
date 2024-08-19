@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=3 format=3 uid="uid://drtrba5gyd1ax"]
+
+[ext_resource type="Resource" uid="uid://dk1r6h6fpmmig" path="res://Resources/Indicators/Cone.tres" id="1_lgnie"]
+[ext_resource type="Script" path="res://Skill.gd" id="2_kjy7t"]
+
+[resource]
+script = ExtResource("2_kjy7t")
+title = "Multi"
+indicator = ExtResource("1_lgnie")
+projectile_name = ""

@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://5miq1f5nx0hy"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_7tf7v"]
+[ext_resource type="Script" path="res://SkillButton.gd" id="2_jmrns"]
+[ext_resource type="Resource" uid="uid://dwraskbh4nu3v" path="res://SingleShot.tres" id="3_84ti3"]
+[ext_resource type="Resource" uid="uid://c1vtsdl386b40" path="res://MultiShot.tres" id="4_6cv04"]
+[ext_resource type="Resource" uid="uid://dajtvtb5k4qnd" path="res://PointShot.tres" id="5_opm32"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n6vhu"]
+size = Vector2(20, 20)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7tf7v")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SkillButton" type="Button" parent="UI/HBoxContainer" node_paths=PackedStringArray("player")]
+layout_mode = 2
+text = "SINGLE
+LONG"
+script = ExtResource("2_jmrns")
+player = NodePath("../../..")
+skill = ExtResource("3_84ti3")
+
+[node name="SkillButton2" type="Button" parent="UI/HBoxContainer" node_paths=PackedStringArray("player")]
+layout_mode = 2
+text = "MULTI
+RADIAL"
+script = ExtResource("2_jmrns")
+player = NodePath("../../..")
+skill = ExtResource("4_6cv04")
+
+[node name="SkillButton3" type="Button" parent="UI/HBoxContainer" node_paths=PackedStringArray("player")]
+layout_mode = 2
+text = "RANGE"
+script = ExtResource("2_jmrns")
+player = NodePath("../../..")
+skill = ExtResource("5_opm32")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_n6vhu")
+
+[connection signal="pressed" from="UI/HBoxContainer/SkillButton" to="UI/HBoxContainer/SkillButton" method="_on_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/SkillButton2" to="UI/HBoxContainer/SkillButton2" method="_on_pressed"]
+[connection signal="pressed" from="UI/HBoxContainer/SkillButton3" to="UI/HBoxContainer/SkillButton3" method="_on_pressed"]
