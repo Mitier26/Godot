@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7rbyoomc7tle"]
+
+[ext_resource type="Script" path="res://배경화면/배경화면.gd" id="1_h60cp"]
+[ext_resource type="Texture2D" uid="uid://bfacggtih7513" path="res://marioData/배경/Gray.png" id="2_c0vao"]
+
+[node name="배경화면" type="ParallaxBackground"]
+script = ExtResource("1_h60cp")
+"배경이미지" = ExtResource("2_c0vao")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1024, 1024)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+scale = Vector2(4, 4)
+texture = ExtResource("2_c0vao")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)

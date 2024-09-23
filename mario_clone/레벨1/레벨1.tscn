@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmtdeos68h8aw"]
+
+[ext_resource type="Texture2D" uid="uid://fswjl0o0bk4q" path="res://icon.svg" id="1_0i6ta"]
+[ext_resource type="PackedScene" uid="uid://2qbv6q1f5xc3" path="res://캐릭터/캐릭터.tscn" id="2_bwus8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivobk"]
+size = Vector2(128, 128)
+
+[node name="레벨1" type="Node2D"]
+
+[node name="캐릭터" parent="." instance=ExtResource("2_bwus8")]
+position = Vector2(599, 224)
+
+[node name="발판" type="StaticBody2D" parent="."]
+position = Vector2(599, 510)
+
+[node name="Icon" type="Sprite2D" parent="발판"]
+texture = ExtResource("1_0i6ta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="발판"]
+shape = SubResource("RectangleShape2D_ivobk")
+
+[node name="발판2" type="StaticBody2D" parent="."]
+position = Vector2(728, 510)
+
+[node name="Icon" type="Sprite2D" parent="발판2"]
+texture = ExtResource("1_0i6ta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="발판2"]
+shape = SubResource("RectangleShape2D_ivobk")
+
+[node name="발판3" type="StaticBody2D" parent="."]
+position = Vector2(965, 471)
+
+[node name="Icon" type="Sprite2D" parent="발판3"]
+texture = ExtResource("1_0i6ta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="발판3"]
+shape = SubResource("RectangleShape2D_ivobk")
