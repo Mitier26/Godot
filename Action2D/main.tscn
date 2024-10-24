@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://dfgtbl330l3xg"]
+[gd_scene load_steps=66 format=3 uid="uid://dfgtbl330l3xg"]
 
 [ext_resource type="Texture2D" uid="uid://qfqq414cgfkg" path="res://images/background.png" id="1_24fxo"]
 [ext_resource type="Texture2D" uid="uid://bp7fx0mxp5jhu" path="res://images/Tiles/ground01.png" id="2_8rgyt"]
+[ext_resource type="AudioStream" uid="uid://bpo6ub7rax2bb" path="res://sounds/bgm.wav" id="2_uh4t0"]
 [ext_resource type="Texture2D" uid="uid://1cokpqf2xp57" path="res://images/Tiles/ground02.png" id="3_66k1h"]
 [ext_resource type="Texture2D" uid="uid://clxyh2pwr2jve" path="res://images/Tiles/ground11.png" id="4_vebeq"]
 [ext_resource type="Texture2D" uid="uid://coiyl30ln85jh" path="res://images/Tiles/ground12.png" id="5_uafrc"]
@@ -37,6 +38,10 @@
 [ext_resource type="Texture2D" uid="uid://bxax76jp0uqt1" path="res://images/item1.png" id="34_2tno8"]
 [ext_resource type="Script" path="res://enemy.gd" id="36_616dc"]
 [ext_resource type="Texture2D" uid="uid://bn42ej2jo67an" path="res://images/enemy.png" id="36_ladav"]
+[ext_resource type="Script" path="res://goal.gd" id="38_hg0dk"]
+[ext_resource type="Texture2D" uid="uid://d3do3q1p6uelh" path="res://images/flag.png" id="39_iln6k"]
+[ext_resource type="Texture2D" uid="uid://kvgccs4685bc" path="res://images/gameover.png" id="41_xfpe2"]
+[ext_resource type="Texture2D" uid="uid://gk4356ejgbkc" path="res://images/gameclear.png" id="42_4vc2g"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jbwfp"]
 
@@ -948,13 +953,27 @@ _data = {
 "move": SubResource("Animation_p44gf")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmt2m"]
+size = Vector2(4, 63)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vfjsi"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmewr"]
+bg_color = Color(0.435294, 1, 0.380392, 1)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("1_24fxo")
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("2_uh4t0")
+autoplay = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_gpxhi")
@@ -1069,4 +1088,37 @@ libraries = {
 "": SubResource("AnimationLibrary_tk7fv")
 }
 
+[node name="Goal" type="Area2D" parent="."]
+position = Vector2(561, -79)
+script = ExtResource("38_hg0dk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(-11, 0)
+shape = SubResource("RectangleShape2D_gmt2m")
+
+[node name="Flag" type="Sprite2D" parent="Goal"]
+texture = ExtResource("39_iln6k")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -547.0
+offset_top = -305.0
+offset_right = -247.0
+offset_bottom = -265.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/background = SubResource("StyleBoxFlat_vfjsi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fmewr")
+value = 10.0
+
+[node name="Gameover" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+texture = ExtResource("41_xfpe2")
+
+[node name="Gameclear" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+texture = ExtResource("42_4vc2g")
+
 [connection signal="body_entered" from="Item" to="Item" method="player_hp_up"]
+[connection signal="body_entered" from="Goal" to="Goal" method="goal"]

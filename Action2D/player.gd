@@ -16,10 +16,26 @@ extends CharacterBody2D
 # HP
 @onready var hp = 100
 
+var attack = preload("res://attack.tscn")
+
 func _ready():
 	# 다른 객체보다 앞에 표시한다.
 	self.z_index = 20
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_select"):
+		var attack_instance = attack.instantiate()
+		attack_instance.z_index = 100
+			
+		if sprite.flip_h:
+			attack_instance.init(self.position, -1)
+		else:
+			attack_instance.init(self.position, 1)
+			
+		get_parent().add_child(attack_instance)
 	
+	$"../ProgressBar".value = hp
+
 func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_right"):
@@ -29,7 +45,7 @@ func _physics_process(delta):
 		sprite.play("walk")
 	elif Input.is_action_pressed("ui_left"):
 		direction.x = -WALK_SPEED
-		sprite.flip_h = false
+		sprite.flip_h = true
 		sprite.play("walk")
 	else:
 		direction.x = 0
@@ -51,11 +67,15 @@ func hp_up(point):
 	if hp > 100:
 		hp = 100
 
-func gameover():
-	print("Game Over")
-
 func hp_down(point):
 	print("HP decrease : -", point)
 	hp -= point
 	if hp < 0:
 		gameover()
+
+func gameover():
+	print("Game Over")
+	var gameover = $"../Gameover"
+	gameover.z_index = 100
+	gameover.visible = true
+	get_tree().paused = true
