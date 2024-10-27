@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://qihbae53mo3b"]
+[gd_scene load_steps=19 format=3 uid="uid://qihbae53mo3b"]
 
 [ext_resource type="Texture2D" uid="uid://cqog5wphk5ad2" path="res://images/grass.png" id="1_2ajtq"]
 [ext_resource type="Script" path="res://QuitGame.gd" id="1_7bir0"]
@@ -10,11 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://c278vrhk858r" path="res://sounds/gun_shot.wav" id="8_f8y74"]
 [ext_resource type="AudioStream" uid="uid://cd7mpvbwbd2bs" path="res://sounds/hit_enemy.wav" id="9_1woig"]
 [ext_resource type="AudioStream" uid="uid://cj2mf0fuk5p7k" path="res://sounds/hit_obstacle.wav" id="10_nqttk"]
-[ext_resource type="Script" path="res://TimerLabel.gd" id="11_kbbeh"]
-[ext_resource type="Texture2D" uid="uid://bw00n22t8dgy6" path="res://images/timeout.png" id="12_aar4d"]
-[ext_resource type="Script" path="res://HpLabel.gd" id="13_arghn"]
-[ext_resource type="Texture2D" uid="uid://btyoodtwrxtfd" path="res://images/gameover.png" id="14_vb6cx"]
-[ext_resource type="Script" path="res://KilledLabel.gd" id="15_okrlt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgbqc"]
 size = Vector3(20, 1, 20)
@@ -42,15 +37,6 @@ geometry_source_geometry_mode = 1
 geometry_source_group_name = &"navmesh"
 cell_height = 0.01
 agent_height = 1.3
-
-[sub_resource type="LabelSettings" id="LabelSettings_30clp"]
-font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_iuaf8"]
-font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_k1jin"]
-font_size = 30
 
 [node name="Node3D" type="Node3D"]
 
@@ -274,36 +260,3 @@ stream = ExtResource("9_1woig")
 
 [node name="HitObstacleAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_nqttk")
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="TimerLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Time 3:00"
-label_settings = SubResource("LabelSettings_30clp")
-script = ExtResource("11_kbbeh")
-
-[node name="Timeout" type="Sprite2D" parent="."]
-position = Vector2(580, 330)
-texture = ExtResource("12_aar4d")
-
-[node name="HpLabel" type="Label" parent="."]
-offset_top = 45.0
-offset_right = 100.0
-offset_bottom = 87.0
-text = "HP 100"
-label_settings = SubResource("LabelSettings_iuaf8")
-script = ExtResource("13_arghn")
-
-[node name="Gameover" type="Sprite2D" parent="."]
-position = Vector2(580, 330)
-texture = ExtResource("14_vb6cx")
-
-[node name="KilledLabel" type="Label" parent="."]
-offset_top = 100.0
-offset_right = 104.0
-offset_bottom = 142.0
-text = "Killed 0"
-label_settings = SubResource("LabelSettings_k1jin")
-script = ExtResource("15_okrlt")

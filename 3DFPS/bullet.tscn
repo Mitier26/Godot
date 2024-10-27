@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq4negrg8jjng"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_bncel"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ndmmi"]
+radius = 0.02
+
+[node name="Bullet" type="RigidBody3D"]
+script = ExtResource("1_bncel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ndmmi")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.02
+
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]

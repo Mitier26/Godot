@@ -14,6 +14,19 @@ var move_velocity = Vector3(0, 0, 0)
 @onready var rifle = $Rifle
 #@onready var rifle1 = get_node("Rifle")
 
+# 총알 취득
+const bullet = preload("res://bullet.tscn")
+# 총탄의 발사점 취득
+@onready var muzzle = get_node("Rifle/Muzzle")
+
+# 플레이어 체력
+@export var hp = 100
+
+# 총알 발사 사운드
+@onready var gun_shot_audio = $"../GunShotAudio"
+
+
+
 func _physics_process(delta):
 	# 지면과 접촉했을 때 읻ㅇ할 수 있게 한다
 	if is_on_floor():
@@ -29,11 +42,11 @@ func _physics_process(delta):
 		elif Input.is_key_pressed(KEY_S):
 			move_velocity += -self.global_transform.basis.x
 	
-	move_velocity = move_speed * move_velocity.normalized()
+		move_velocity = move_speed * move_velocity.normalized()
 	
-	if Input.is_key_pressed(KEY_SPACE):
-		move_velocity.y = jump_power
-	
+		if Input.is_key_pressed(KEY_SPACE):
+			move_velocity.y = jump_power
+		
 	move_velocity.y -= gravity * delta
 	set_velocity(move_velocity * delta)
 	set_up_direction(Vector3(0, 1, 0))
@@ -50,3 +63,10 @@ func _input(event):
 		rifle.rotation.z = 0.25 * PI
 	elif rifle.rotation.z < -0.25 * PI:
 		rifle.rotation.z = -0.25 * PI
+		
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			var newBullet = bullet.instantiate()
+			newBullet.look_at_from_position(muzzle.global_transform.origin, muzzle.global_transform.origin - muzzle.global_transform.basis.x)
+			get_node("/root").add_child(newBullet)
+			gun_shot_audio.play()
