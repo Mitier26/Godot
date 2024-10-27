@@ -1,0 +1,80 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpokif7vl11i6"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ldcwl"]
+[ext_resource type="Texture2D" uid="uid://venc8yrber74" path="res://images/floor.png" id="1_li4n3"]
+[ext_resource type="ArrayMesh" uid="uid://dpr40rkgfwbmt" path="res://models/controller/controller.obj" id="2_3lbp7"]
+[ext_resource type="Script" path="res://StaticBody3D.gd" id="3_hk4u1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r2xa6"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37poa"]
+albedo_texture = ExtResource("1_li4n3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc0fq"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6iyd"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_72c5t"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ldcwl")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_r2xa6")
+material = SubResource("StandardMaterial3D_37poa")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="RinghtController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+tracker = &"right_hand"
+
+[node name="Controller" type="MeshInstance3D" parent="XROrigin3D/RinghtController"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, -1, 2)
+mesh = ExtResource("2_3lbp7")
+skeleton = NodePath("../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/RinghtController"]
+target_position = Vector3(0, 0, -10)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="XROrigin3D/RinghtController/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -5)
+radius = 0.05
+height = 10.0
+material = SubResource("StandardMaterial3D_uc0fq")
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+tracker = &"left_hand"
+
+[node name="Controller" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, -1, 2)
+mesh = ExtResource("2_3lbp7")
+skeleton = NodePath("../../..")
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/LeftController"]
+target_position = Vector3(0, 0, -10)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="XROrigin3D/LeftController/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -5)
+radius = 0.05
+height = 10.0
+material = SubResource("StandardMaterial3D_o6iyd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.39861)
+script = ExtResource("3_hk4u1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/StaticBody3D"]
+shape = SubResource("SphereShape3D_72c5t")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="XROrigin3D/StaticBody3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.686973, 0.726683, 0, -0.726683, 0.686973, 0, 5.71788, 0)
