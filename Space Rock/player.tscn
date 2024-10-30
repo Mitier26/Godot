@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvxff6t3yaro0"]
+[gd_scene load_steps=8 format=3 uid="uid://bvxff6t3yaro0"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_twscy"]
 [ext_resource type="Texture2D" uid="uid://byjlamtq07vga" path="res://assets/player_ship.png" id="1_ydgyo"]
 [ext_resource type="PackedScene" uid="uid://bk2l61wvfmr0p" path="res://bullet.tscn" id="2_8exm3"]
+[ext_resource type="PackedScene" uid="uid://pwiv8dtkagoi" path="res://explosion.tscn" id="4_tfl7f"]
+[ext_resource type="AudioStream" uid="uid://d321t20kol6ry" path="res://assets/sounds/laser.ogg" id="5_swgxy"]
+[ext_resource type="AudioStream" uid="uid://dx8un04x32e0q" path="res://assets/sounds/engine.ogg" id="6_51d6l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qppw0"]
 radius = 25.0
 
 [node name="Player" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
 linear_damp = 1.0
 angular_damp = 5.0
 script = ExtResource("1_twscy")
@@ -26,4 +31,21 @@ position = Vector2(50, 0)
 
 [node name="GunCooldown" type="Timer" parent="."]
 
+[node name="Explosion" parent="." instance=ExtResource("4_tfl7f")]
+visible = false
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_swgxy")
+volume_db = -10.0
+
+[node name="EngineSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_51d6l")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]

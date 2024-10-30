@@ -18,3 +18,9 @@ func _on_body_entered(body):
 	if body.is_in_group("rocks"):
 		body.explode()
 		queue_free()
+
+# 총알과 적의 충돌
+# 바위는 RigidBody라 bodyEntered가 가능하지만 적은 Area2D다
+func _on_area_entered(area):
+	if area.is_in_group("enemies"):
+		area.take_damage(1)
