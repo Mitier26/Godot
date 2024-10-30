@@ -80,12 +80,14 @@ func _process(delta):
 	get_input()
 
 func get_input():
+	$Exhaust.emitting = false
 	# 주기적으로 힘이 없는 상태로 시작
 	thrust = Vector2.ZERO
 	# 현재 상태가 DEAD 또는 INIT 이면
 	if state in [DEAD, INIT]:
 		return
 	if Input.is_action_pressed("thrust"):
+		$Exhaust.emitting = true
 		thrust = transform.x * engine_power
 		# 매 프레임마다 실행 되면 이상하다.
 		if not $EngineSound.playing:
