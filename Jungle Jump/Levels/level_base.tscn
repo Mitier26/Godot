@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8iddo4b32sbn"]
+
+[ext_resource type="Script" path="res://Levels/level_base.gd" id="1_m5e7k"]
+[ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_jcnl0"]
+[ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="2_t2gav"]
+[ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_1ptt7"]
+[ext_resource type="PackedScene" uid="uid://dlxvcpmvk2fpm" path="res://player/player.tscn" id="5_pyiqf"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_m5e7k")
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource("2_t2gav")
+format = 2
+layer_0/tile_data = PackedInt32Array(131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 131077, 65536, 1)
+
+[node name="Items" type="TileMap" parent="."]
+tile_set = ExtResource("2_jcnl0")
+format = 2
+
+[node name="Danger" type="TileMap" parent="."]
+tile_set = ExtResource("3_1ptt7")
+format = 2
+
+[node name="Player" parent="." instance=ExtResource("5_pyiqf")]
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(14, 22)
