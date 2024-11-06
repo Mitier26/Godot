@@ -11,6 +11,9 @@ func _ready():
 	$Player.reset($SpawnPoint.position)
 	set_camera_limits()
 	spawn_items()
+	# 플레이어의 life_change에 연결한다.
+	$Player.life_change.connect($CanvasLayer/HUD.update_life)
+	score_changed.connect($CanvasLayer/HUD.update_score)
 
 # 플레이어에게 붙어 있는 카메라가 맵의 크기를 벗어 나지 않게 한다.
 func set_camera_limits():
@@ -35,3 +38,6 @@ func _on_item_picked_up():
 func set_score(value):
 	score = value
 	score_changed.emit(score)
+
+func _on_player_died():
+	GameState.restart()

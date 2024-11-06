@@ -1,18 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8iddo4b32sbn"]
+[gd_scene load_steps=9 format=3 uid="uid://b8iddo4b32sbn"]
 
 [ext_resource type="Script" path="res://Levels/level_base.gd" id="1_m5e7k"]
+[ext_resource type="Texture2D" uid="uid://elfqj4ni4jxs" path="res://assets/environment/back.png" id="2_4ulxe"]
 [ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_jcnl0"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="2_t2gav"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_1ptt7"]
+[ext_resource type="Texture2D" uid="uid://c74m2qnljojh0" path="res://assets/environment/middle.png" id="3_njkl4"]
 [ext_resource type="PackedScene" uid="uid://dlxvcpmvk2fpm" path="res://player/player.tscn" id="5_pyiqf"]
+[ext_resource type="PackedScene" uid="uid://bmgjdummykjo6" path="res://UI/hud.tscn" id="8_rujg8"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_m5e7k")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_4ulxe")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(0, 150)
+texture = ExtResource("3_njkl4")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 880, 368)
+
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("2_t2gav")
 format = 2
-layer_0/tile_data = PackedInt32Array(131072, 65536, 1, 131073, 65536, 1, 131074, 65536, 1, 131075, 65536, 1, 131076, 65536, 1, 131077, 65536, 1)
+layer_0/tile_data = PackedInt32Array(851966, 196608, 1, 851967, 196608, 1, 786432, 196608, 1, 786433, 196608, 1, 786434, 196608, 1, 786435, 196608, 1, 786436, 196608, 1, 786437, 196608, 1, 786438, 196608, 1, 786439, 196608, 1, 786440, 196608, 1, 786441, 196608, 1, 786442, 196608, 1, 786443, 196608, 1, 786444, 196608, 1, 786445, 196608, 1, 786446, 196608, 1, 786447, 196608, 1, 786448, 196608, 1, 786449, 196608, 1, 786450, 196608, 1, 786451, 196608, 1, 786452, 196608, 1, 786453, 196608, 1, 786454, 196608, 1, 786455, 196608, 1, 786456, 196608, 1, 786457, 196608, 1, 786458, 196608, 1, 786459, 196608, 1, 786460, 196608, 1, 786461, 196608, 1, 786462, 196608, 1, 786463, 196608, 1, 786464, 196608, 1, 786465, 196608, 1, 786466, 196608, 1, 786467, 196608, 1, 786468, 196608, 1, 786469, 196608, 1, 786470, 196608, 1, 786471, 196608, 1, 786472, 196608, 1, 786473, 196608, 1, 786474, 196608, 1, 786475, 196608, 1, 786476, 196608, 1, 786477, 196608, 1, 786478, 196608, 1, 786479, 196608, 1, 786480, 196608, 1, 786481, 196608, 1, 786482, 196608, 1, 786483, 196608, 1, 786484, 196608, 1, 786485, 196608, 1, 786486, 196608, 1, 786487, 196608, 1, 786488, 196608, 1, 786489, 196608, 1, 786490, 196608, 1, 786491, 196608, 1, 786492, 196608, 1, 786493, 196608, 1, 786494, 196608, 1, 786495, 196608, 1, 786496, 196608, 1, 786497, 196608, 1, 786498, 196608, 1, 786499, 196608, 1, 786500, 196608, 1, 786501, 196608, 1, 786502, 196608, 1, 786503, 196608, 1, 786504, 196608, 1, 786505, 196608, 1, 786506, 196608, 1, 786507, 196608, 1, 786508, 196608, 1, 786509, 196608, 1, 786510, 196608, 1, 786511, 196608, 1, 786512, 196608, 1, 786513, 196608, 1, 786514, 196608, 1, 786515, 196608, 1, 786516, 196608, 1, 786517, 196608, 1)
 
 [node name="Items" type="TileMap" parent="."]
 tile_set = ExtResource("2_jcnl0")
@@ -23,6 +49,15 @@ tile_set = ExtResource("3_1ptt7")
 format = 2
 
 [node name="Player" parent="." instance=ExtResource("5_pyiqf")]
+position = Vector2(232, 134)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(14, 22)
+position = Vector2(48, 159)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_rujg8")]
+
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="life_change" from="Player" to="CanvasLayer/HUD" method="update_life"]

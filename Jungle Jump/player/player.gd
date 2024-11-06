@@ -19,8 +19,6 @@ var life = 3: set = set_life
 func set_life(value):
 	life = value
 	life_change.emit(life)
-	if life <= 0:
-		change_state(DEAD)
 
 func _ready():
 	change_state(IDLE)
@@ -38,27 +36,40 @@ func change_state(new_state):
 			velocity.y = -200
 			# 진행 방향의 반대로 날림
 			velocity.x = -100 * sign(velocity.x)
-			life = -1
+			life -= 1
 			# 0.5초 기다리고 IDLE 상태로 변경
 			await get_tree().create_timer(0.5).timeout
 			change_state(IDLE)
+			if life <= 0:
+				change_state(DEAD)
 		JUMP:
 			$AnimationPlayer.play("jump_up")
 		DEAD:
 			hide()
 
-func _process(delta):
+func _physics_process(delta):
 	velocity.y += gravity * delta
 	get_input()
 	
 	move_and_slide()
+	
+	if state == HURT:
+		return
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("danger"):
+			hurt()
+		if collision.get_collider().is_in_group("enemies"):
+			if position.y < collision.get_collider().position.y:
+				collision.get_collider().take_damage()
+				velocity.y = -200
+			else:
+				hurt()
 
 func get_input():
-	
 	# 상처 입으면 이동할 수 없다.
 	if state == HURT:
 		return
-	
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
