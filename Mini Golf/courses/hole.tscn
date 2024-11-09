@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cty4jcpucydq4"]
+[gd_scene load_steps=12 format=3 uid="uid://cty4jcpucydq4"]
 
 [ext_resource type="Script" path="res://courses/hole.gd" id="1_8vwrm"]
 [ext_resource type="MeshLibrary" uid="uid://g7rie4nh5rkf" path="res://assets/golf_tiles.tres" id="1_cqdkf"]
 [ext_resource type="PackedScene" uid="uid://d023jce3k7dh7" path="res://ball.tscn" id="2_mj4d0"]
+[ext_resource type="Script" path="res://courses/CameraGimbal.gd" id="3_hjn4r"]
 [ext_resource type="PackedScene" uid="uid://dfnsn87h0namf" path="res://arrow.tscn" id="4_pxelf"]
 [ext_resource type="PackedScene" uid="uid://c2tkug3ertwha" path="res://ui.tscn" id="5_a4pfs"]
 
@@ -46,8 +47,13 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.677646, 0.735388, 0, -0.735388, 0.677646, 0.365596, 3.65571, 2.53812)
+[node name="CameraGimbal" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999937, -0.0112397, 0, 0.0112397, 0.999937, 0, 0, 0)
+script = ExtResource("3_hjn4r")
+
+[node name="GimballInner" type="Node3D" parent="CameraGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal/GimballInner"]
 
 [node name="Hole" type="Area3D" parent="."]
 
