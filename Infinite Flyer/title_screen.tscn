@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdjscux2xx45u"]
+
+[ext_resource type="Script" path="res://TitleScreen.gd" id="1_v4luy"]
+[ext_resource type="Texture2D" uid="uid://dn6aqj5abxk70" path="res://assets/styled_sky.hdr" id="2_83x4w"]
+[ext_resource type="FontFile" uid="uid://dwe354n1kha7i" path="res://assets/Baloo2-Medium.ttf" id="3_60647"]
+[ext_resource type="Texture2D" uid="uid://c5s12qnopne4l" path="res://assets/buttons/play_button.png" id="4_xdb5l"]
+[ext_resource type="Texture2D" uid="uid://b3vkbqv2odcw7" path="res://assets/buttons/play_button_pr.png" id="5_w6c3u"]
+[ext_resource type="Texture2D" uid="uid://bbufg5c378337" path="res://assets/buttons/play_button_h.png" id="6_84g6x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_55a2u"]
+font = ExtResource("3_60647")
+font_size = 128
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4luy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -254.0
+offset_top = -86.0
+offset_right = 1567.0
+offset_bottom = 930.0
+texture = ExtResource("2_83x4w")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -210.0
+offset_right = 218.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "000000"
+label_settings = SubResource("LabelSettings_55a2u")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 379.0
+offset_right = 775.0
+offset_bottom = 620.0
+texture_normal = ExtResource("4_xdb5l")
+texture_pressed = ExtResource("5_w6c3u")
+texture_hover = ExtResource("6_84g6x")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="HighScore" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
